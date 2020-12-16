@@ -1,0 +1,31 @@
+{% extends 'encyclopedia/layout.html' %}
+
+<!---->
+{% block title %} Page editor {% endblock %}
+<!---->
+{% block body %}
+<form action="{{ action }}" method="POST">
+    {%csrf_token%}
+    <!---->
+    {% if not editing %}
+    <input
+        type="text"
+        name="title"
+        id="title"
+        style="margin: 5vh"
+        placeholder="Title"
+    />
+    {% endif %}
+    <br />
+    <textarea
+        name="content"
+        id="content"
+        style="min-height:60vh; margin: 5vh; margin-top: 0;"
+        class="col-9"
+        placeholder="Article content"
+        >{{ defaultContent }}</textarea
+    >
+    <br />
+    <input type="submit" style="margin:5vh; margin-top:0;" />
+</form>
+{% endblock %}
